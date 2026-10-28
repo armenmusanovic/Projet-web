@@ -1,0 +1,198 @@
+:root {
+  --bg: #161616;
+  --bg2: #202020;
+  --tekst: #e8e6df;
+  --tekst2: #a8a59b;
+  --akcent: #c9b48a;
+  --linija: #33322f;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.7;
+  color: var(--tekst);
+  background: var(--bg);
+}
+
+h1, h2, h3, .logo { font-family: "Playfair Display", Georgia, serif; font-weight: 500; margin: 0; }
+
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding: 14px 5%;
+  background: rgba(22, 22, 22, 0.94);
+  border-bottom: 1px solid var(--linija);
+}
+
+.logo { font-size: 20px; letter-spacing: 1px; color: var(--tekst); text-decoration: none; }
+
+nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+
+nav a {
+  color: var(--tekst2);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+}
+
+nav a:hover, nav a.aktivna { color: var(--akcent); border-bottom-color: var(--akcent); }
+
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 5%;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.8)),
+    url("../assets/stepenice-krecnjak.jpg") center / cover no-repeat;
+}
+
+.hero h1 { font-size: clamp(48px, 10vw, 120px); letter-spacing: 4px; }
+.podnaslov { margin: 10px 0 0; font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--akcent); }
+.opis-hero { max-width: 560px; margin: 18px 0 34px; color: var(--tekst2); font-size: 17px; }
+.dugme, button {
+  display: inline-block;
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--akcent);
+  border: 1px solid var(--akcent);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dugme:hover, button:hover { background: var(--akcent); color: var(--bg); }
+
+
+.sekcija { padding: 100px 5%; scroll-margin-top: 60px; }
+.sekcija.tamna { background: var(--bg2); }
+.naslov { text-align: center; font-size: clamp(30px, 4vw, 44px); margin-bottom: 60px; }
+.naslov::after { content: ""; display: block; width: 60px; height: 2px; background: var(--akcent); margin: 16px auto 0; }
+.centar { text-align: center; margin-top: 50px; }
+
+
+.kartice {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.kartica { background: var(--bg2); border: 1px solid var(--linija); }
+.kartica img { display: block; width: 100%; height: 240px; object-fit: cover; }
+.kartica h3 { font-size: 22px; padding: 20px 20px 6px; }
+.kartica p { padding: 0 20px 24px; margin: 0; color: var(--tekst2); font-size: 15px; }
+
+
+.red { max-width: 1100px; margin: 0 auto 110px; display: flex; align-items: center; gap: 70px; }
+.red:nth-of-type(even) { flex-direction: row-reverse; }
+.red:last-child { margin-bottom: 0; }
+
+.red figure { flex: 1; margin: 0; }
+.red img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.red .opis { flex: 1; }
+
+.opis span { color: var(--akcent); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
+.opis h3 { font-size: clamp(26px, 3.5vw, 38px); margin: 8px 0 16px; }
+.opis p { color: var(--tekst2); font-size: 17px; }
+
+
+.materijali {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.materijal { position: relative; overflow: hidden; }
+.materijal img { display: block; width: 100%; height: 300px; object-fit: cover; transition: transform 0.6s; }
+.materijal:hover img { transform: scale(1.06); }
+
+.materijal span {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 40px 16px 16px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 22px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+}
+
+
+.reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal.vidljivo { opacity: 1; transform: none; }
+
+
+.stranica { max-width: 900px; margin: 0 auto; padding: 70px 5% 60px; }
+.stranica h1 { font-size: clamp(32px, 5vw, 48px); margin-bottom: 12px; }
+.stranica h2 { margin: 40px 0 12px; font-size: 26px; }
+.uvod { color: var(--tekst2); font-size: 18px; margin-bottom: 40px; }
+
+.kontakt { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+.kontakt div { padding: 20px; background: var(--bg2); border: 1px solid var(--linija); }
+.kontakt span { color: var(--akcent); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+.kontakt p { margin: 6px 0 0; }
+
+
+form { display: grid; gap: 16px; max-width: 520px; margin-bottom: 30px; }
+label { display: grid; gap: 6px; font-size: 14px; color: var(--tekst2); }
+.dimenzije { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+
+input, select, textarea {
+  padding: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--tekst);
+  background: var(--bg2);
+  border: 1px solid var(--linija);
+}
+
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--akcent); }
+
+#lista { padding: 0; list-style: none; max-width: 520px; margin-bottom: 40px; }
+#lista li { padding: 12px 0; border-bottom: 1px solid var(--linija); }
+#lista button { margin-left: 10px; padding: 4px 12px; font-size: 11px; }
+
+
+footer { background: var(--bg2); border-top: 1px solid var(--linija); padding: 50px 5%; }
+
+.podnozje {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.podnozje h3 { font-size: 18px; color: var(--akcent); margin-bottom: 10px; }
+.podnozje p { margin: 0; color: var(--tekst2); font-size: 15px; }
+
+
+@media (max-width: 800px) {
+  .red, .red:nth-of-type(even) { flex-direction: column; gap: 24px; margin-bottom: 70px; }
+  .sekcija { padding: 70px 5%; }
+  .dimenzije { grid-template-columns: 1fr; }
+  header { justify-content: center; }
+}
