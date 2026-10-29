@@ -1,95 +1,50 @@
-<!DOCTYPE html>
-<html lang="bs">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zahtjev | Klesarstvo Mušanović</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-  <header>
-    <a class="logo" href="../index.html">Klesarstvo Mušanović</a>
-    <nav>
-      <a href="../index.html">Početna</a>
-      <a href="../index.html#usluge">Usluge</a>
-      <a href="../index.html#radovi">Naši radovi</a>
-      <a href="../index.html#materijali">Materijali</a>
-      <a href="about.html">O nama</a>
-      <a href="zahtjev.html" class="aktivna">Zahtjev</a>
-    </nav>
-  </header>
+<div class="stranica">
+  <h1>Zahtjev za ponudu</h1>
+  <p class="uvod">Odaberite proizvod, vrstu kamena i dimenzije, dodajte u listu i pošaljite upit.</p>
 
-  <main class="stranica">
-    <h1>Zahtjev za ponudu</h1>
-    <p class="uvod">Odaberite proizvod, vrstu kamena i dimenzije, dodajte u listu i pošaljite upit.</p>
+  <form id="forma-stavka">
+    <label>Proizvod
+      <select id="proizvod" required>
+        <option value="">Odaberi</option>
+        <option>Stepenice</option>
+        <option>Klupica</option>
+        <option>Nišan</option>
+        <option>Spomenik</option>
+        <option>Kamin</option>
+        <option>Ostalo</option>
+      </select>
+    </label>
 
-    <form id="forma-stavka">
-      <label>Proizvod
-        <select id="proizvod" required>
-          <option value="">Odaberi</option>
-          <option>Stepenice</option>
-          <option>Klupica</option>
-          <option>Nišan</option>
-          <option>Spomenik</option>
-          <option>Kamin</option>
-          <option>Ostalo</option>
-        </select>
-      </label>
+    <label>Vrsta kamena
+      <select id="kamen" required>
+        <option value="">Odaberi</option>
+        <option>Granit</option>
+        <option>Crni granit</option>
+        <option>Mramor</option>
+        <option>Krečnjak</option>
+        <option>Pješčenjak</option>
+      </select>
+    </label>
 
-      <label>Vrsta kamena
-        <select id="kamen" required>
-          <option value="">Odaberi</option>
-          <option>Granit</option>
-          <option>Crni granit</option>
-          <option>Mramor</option>
-          <option>Krečnjak</option>
-          <option>Pješčenjak</option>
-        </select>
-      </label>
-
-      <div class="dimenzije">
-        <label>Dužina (cm) <input type="number" id="duzina" min="1" required></label>
-        <label>Širina (cm) <input type="number" id="sirina" min="1" required></label>
-        <label>Visina (cm) <input type="number" id="visina" min="1" required></label>
-      </div>
-
-      <label>Tekst za uklesati (nije obavezno)
-        <textarea id="tekst" rows="3"></textarea>
-      </label>
-
-      <button type="submit">Dodaj u listu</button>
-    </form>
-
-    <h2>Vaša lista</h2>
-    <ul id="lista"></ul>
-
-    <form id="forma-upit">
-      <label>Ime i prezime <input type="text" id="ime" required></label>
-      <label>Telefon <input type="tel" id="telefon" required></label>
-      <button type="submit">Pošalji upit</button>
-    </form>
-  </main>
-
-  <footer>
-    <div class="podnozje">
-      <div>
-        <h3>Klesarstvo Mušanović</h3>
-        <p>Porodična klesarska radnja.</p>
-      </div>
-      <div>
-        <h3>Kontakt</h3>
-        <p>Telefon: 063 412 291<br>Adresa: Bukovica 94,Kiseljak</p>
-      </div>
-      <div>
-        <h3>Radno vrijeme</h3>
-        <p>Pon–Pet: 08:00–16:00<br>Subota: 08:00–14:30</p>
-      </div>
+    <div class="dimenzije">
+      <label>Dužina (cm) <input type="number" id="duzina" min="1" required></label>
+      <label>Širina (cm) <input type="number" id="sirina" min="1" required></label>
+      <label>Visina (cm) <input type="number" id="visina" min="1" required></label>
     </div>
-  </footer>
 
-  <script src="../js/script.js"></script>
-</body>
-</html>
+    <label>Tekst za uklesati (nije obavezno)
+      <textarea id="tekst" rows="3"></textarea>
+    </label>
+
+    <button type="submit">Dodaj u listu</button>
+  </form>
+
+  <h2>Vaša lista</h2>
+  <ul id="lista"></ul>
+
+  <form id="forma-upit">
+    <label>Ime i prezime <input type="text" id="ime" required></label>
+    <label>Telefon <input type="tel" id="telefon" required></label>
+    <button type="submit">Pošalji upit</button>
+  </form>
+</div>

@@ -1,5 +1,4 @@
-
-const elementi = document.querySelectorAll(".reveal");
+let lista = JSON.parse(localStorage.getItem("lista")) || [];
 
 const posmatrac = new IntersectionObserver(function (zapisi) {
   zapisi.forEach(function (zapis) {
@@ -10,14 +9,11 @@ const posmatrac = new IntersectionObserver(function (zapisi) {
   });
 }, { threshold: 0.15 });
 
-elementi.forEach(function (el) { posmatrac.observe(el); });
-
-
-let lista = JSON.parse(localStorage.getItem("lista")) || [];
-
-const formaStavka = document.getElementById("forma-stavka");
-const formaUpit = document.getElementById("forma-upit");
-const prikaz = document.getElementById("lista");
+function pokreniReveal() {
+  document.querySelectorAll(".reveal").forEach(function (el) {
+    posmatrac.observe(el);
+  });
+}
 
 function spremi() {
   localStorage.setItem("lista", JSON.stringify(lista));
@@ -25,6 +21,8 @@ function spremi() {
 }
 
 function prikaziListu() {
+  const prikaz = document.getElementById("lista");
+  if (!prikaz) return;
   prikaz.innerHTML = "";
 
   if (lista.length === 0) {
@@ -51,7 +49,11 @@ function prikaziListu() {
   });
 }
 
-if (formaStavka) {
+function pokreniZahtjev() {
+  const formaStavka = document.getElementById("forma-stavka");
+  const formaUpit = document.getElementById("forma-upit");
+  if (!formaStavka) return;
+
   formaStavka.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -81,3 +83,20 @@ if (formaStavka) {
 
   prikaziListu();
 }
+
+function pokreniAuth() {
+  ["login-form", "register-form"].forEach(function (id) {
+    const forma = document.getElementById(id);
+    if (!forma) return;
+    forma.addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Povezivanje sa serverom (JWT prijava) dodajemo u kasnijim milestoneima.");
+    });
+  });
+}
+
+document.addEventListener("viewloaded", function () {
+  pokreniReveal();
+  pokreniZahtjev();
+  pokreniAuth();
+});
