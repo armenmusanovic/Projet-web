@@ -210,3 +210,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--linija); padding: 5
 .galerija figcaption { padding-top: 8px; font-size: 15px; color: var(--tekst2); }
 .stranica section { margin-bottom: 30px; }
 .stranica h3 { margin: 24px 0 12px; font-size: 22px; }
+.stranica h1, .stranica h3 { text-align: center; }
+.galerija { max-width: 1100px; margin-left: auto; margin-right: auto; justify-items: center; }
+.galerija figure, .galerija img { width: 100%; }
+.galerija figcaption { text-align: center; }
