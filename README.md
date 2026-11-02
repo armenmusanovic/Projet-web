@@ -45,7 +45,9 @@ Planned: weather forecast (OpenWeatherMap) shown on the request page, because in
 1. Install XAMPP and start Apache.
 2. Clone the repository into C:\xampp\htdocs.
 3. Open http://localhost/your-folder/Projet-web/frontend/index.html
-4. Backend setup (later milestones): import the .sql file and copy config.example.php to config.php.
+4. Start MySQL in XAMPP, open http://localhost/phpmyadmin, click Import and choose backend/database.sql.
+5. Copy backend/config/config.example.php to backend/config/config.php (and adjust credentials if needed).
+6. Test the DAO layer: http://localhost/your-folder/Projet-web/backend/test_dao.php
 
 ## Links
 - Swagger documentation: (Milestone 3)
