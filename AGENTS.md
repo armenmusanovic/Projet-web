@@ -33,3 +33,13 @@ docs/ -> AI_LOG.md
 - Do not add libraries without asking.
 - Never hard-code secrets.
 - Follow the folder structure and layering above.
+
+## Database and DAO layer (Milestone 2)
+- Database: MySQL, name `klesarstvo`. Schema and sample data are in `backend/database.sql`.
+- Tables: users, stone_types, works, requests, request_items, reviews (all with primary keys, foreign keys where needed).
+- `backend/dao/Database.php` opens one PDO connection (singleton) and reads credentials from `backend/config/config.php`.
+- `backend/config/config.php` is NOT committed (listed in `.gitignore`). `backend/config/config.example.php` is committed as a template.
+- All DAO classes extend `BaseDao` and get getAll, getById, create, update and delete from it.
+- Each DAO only sets its table name in the constructor and adds its own queries (for example getByEmail, getByUser).
+- Only PDO prepared statements are allowed. Never put user values directly into SQL strings.
+- Only DAO classes talk to the database. Routes and services must never write SQL.
