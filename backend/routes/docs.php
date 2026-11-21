@@ -12,12 +12,9 @@ Flight::route('GET /openapi.json', function () {
         ]);
         header('Content-Type: application/json');
         echo $openapi->toJson();
-    } catch (Throwable $e) {
-        Flight::json([
-            'error' => $e->getMessage(),
-            'file' => basename($e->getFile()),
-            'line' => $e->getLine(),
-        ], 500);
+        } catch (Throwable $e) {
+        error_log($e->getMessage());
+        Flight::json(['error' => 'Could not generate API documentation'], 500);
     }
 });
 
