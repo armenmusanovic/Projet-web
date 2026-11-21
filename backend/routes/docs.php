@@ -20,3 +20,26 @@ Flight::route('GET /openapi.json', function () {
         ], 500);
     }
 });
+
+
+// Stranica sa Swagger UI-jem
+Flight::route('GET /docs', function () {
+    header('Content-Type: text/html; charset=utf-8');
+    echo <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Klesarstvo Musanovic API docs</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css">
+</head>
+<body>
+  <div id="swagger-ui"></div>
+  <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+  <script>
+    SwaggerUIBundle({ url: 'openapi.json', dom_id: '#swagger-ui' });
+  </script>
+</body>
+</html>
+HTML;
+});
