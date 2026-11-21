@@ -7,6 +7,7 @@ require __DIR__ . '/routes/users.php';
 require __DIR__ . '/routes/reviews.php';
 require __DIR__ . '/routes/requests.php';
 require __DIR__ . '/routes/request_items.php';
+require __DIR__ . '/routes/weather.php';
 require __DIR__ . '/routes/docs.php';
 
 Flight::route('GET /ping', function () {
