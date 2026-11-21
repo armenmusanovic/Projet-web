@@ -6,6 +6,7 @@ require __DIR__ . '/routes/works.php';
 require __DIR__ . '/routes/users.php';
 require __DIR__ . '/routes/reviews.php';
 require __DIR__ . '/routes/requests.php';
+require __DIR__ . '/routes/request_items.php';
 
 Flight::route('GET /ping', function () {
     Flight::json(['status' => 'ok']);
