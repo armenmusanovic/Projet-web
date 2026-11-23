@@ -45,3 +45,23 @@ I used AI models (Claude and others) in some parts of the project.
    **How I noticed:** I checked the file with `Get-Content` and it was correct. Same size was only a coincidence.
    **Fix:** No change needed. I learned to check the content, not guess from the size.
 
+
+
+## Milestone 3
+
+### AI tools used
+Ai helped me with FlightPHP, services, routes, OpenAPI/Swagger and the weather API. I tested everything myself in PowerShell and in the browser.
+
+### Most important prompts
+1. "Create a service for each entity, FlightPHP routes, OpenAPI docs and an external API endpoint."
+2. "Composer says the zip extension is missing."
+3. "The OpenAPI generator returns 500."
+
+### Cases where AI was wrong
+1. **Problem:** The AI did not warn me that Composer needs the `zip` extension.
+   **How I noticed:** Composer printed "zip extension is missing".
+   **Fix:** I enabled `extension=zip` in `php.ini` and ran `composer install` again.
+
+2. **Problem:** The first `docs.php` did not load the `OpenApiInfo` class, so the generator skipped it and returned 500.
+   **How I noticed:** I temporarily printed the error message: "Skipping unknown \OpenApiInfo".
+   **Fix:** The route now loads all files from `backend/openapi/` and scans only that folder.

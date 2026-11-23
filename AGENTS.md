@@ -43,3 +43,19 @@ docs/ -> AI_LOG.md
 - Each DAO only sets its table name in the constructor and adds its own queries (for example getByEmail, getByUser).
 - Only PDO prepared statements are allowed. Never put user values directly into SQL strings.
 - Only DAO classes talk to the database. Routes and services must never write SQL.
+
+
+
+
+## Services, routes and API docs (Milestone 3)
+- Backend framework: FlightPHP (installed with Composer in `backend/`). `vendor/` is not committed, run `composer install` in `backend/`.
+- Entry point is `backend/index.php`, `.htaccess` sends all requests to it.
+- There is one service per entity in `backend/services/` (all extend `BaseService`). Services are the only layer that calls DAOs.
+- Services validate data and allow only fields listed in `$fields`. Invalid data throws `ValidationException` (400), a missing record throws `NotFoundException` (404).
+- Routes are in `backend/routes/`, one file per entity. Routes never contain SQL or business logic, they only call a service.
+- `routes/helpers.php` has `respond()` (turns exceptions into JSON with a status code) and `body()` (reads the JSON request body).
+- API responses are JSON with correct status codes: 200, 201, 400, 404, 500 (401 and 403 come with JWT in Milestone 4).
+- OpenAPI docs are written as PHP attributes in `backend/openapi/` (one file per entity). Swagger UI is at `/docs`, the generated JSON at `/openapi.json`. Every new endpoint must be documented there.
+- External API: OpenWeatherMap, called only from `WeatherService` (cURL with a 5 second timeout). Endpoint `GET /weather`. Failures are written to the error log and return 503, the rest of the application keeps working.
+- The API key is in `backend/config/config.php` (not committed). `config.example.php` has an empty key.
+- Passwords are stored only as hashes (`password_hash`) and the hash is never returned by the API.
